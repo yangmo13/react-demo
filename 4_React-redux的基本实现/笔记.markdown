@@ -1,0 +1,16 @@
+## react-redux 的使用
+### Rect-redux的基本使用
+1. 需要容器组件包裹UI组件
+   * 容器组件需要引入 connect 
+   (```) import connect from "react-redux" (```)
+   * 引入connect之后通过使用connect 导出并且包裹ui组件来实现创建
+   (```)export default  connect(mapStateToProps,mapDispatchToProps)(UI组件) (```)
+
+2. 需要通过容器组件向UI组件传递mapStateToProps和mapDispatchToProps
+   * connect 会接收state 和 dispatch 两个函数，这两个函数会被调用，并且将接收的返回值以props的方式传递给UI组件
+   * 同时，调用这两个函数时，react-redux会给第一个mapStateToProps函数传入 state ，会给 mapDispatchToProps传入dispatch
+   * 要求：
+      1. 需要mapStateToProps返回一个对象，表示状态，如 {count:state}
+      2. 需要mapDispatchToProps返回一个对象，表示dispatch 如 {add:dispatch(createIncrementAction(number))}
+3. UI组件通过props进行接收 state 和 dispatch
+   * UI组件通过this.props来接收容器组件传递的状态、dispatch、store
