@@ -1,0 +1,7 @@
+``` Redux 的使用 ```
+## 语法
+    store :数据管理中心   使用方法 ：store.getState()
+    reduce ：修改状态     使用方法 ：store.dispatch({type,data}) 
+        
+## API
+    store.subscribe(()=>{})  当reduce完成修改触发它，需要在该函数里面重新定义   this.setState({}) 触发页面重新渲染

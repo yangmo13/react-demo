@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Count from "./component/Count"
 
-class App extends Component {
+class Idnex extends Component {
     render() {
         return (
             <div>
-               <Count></Count>
+                默认组件
             </div>
         );
     }
 }
 
-export default App;
+export default Idnex;

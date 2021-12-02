@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Count from "./component/Count"
 
-class App extends Component {
+class Index extends Component {
     render() {
         return (
             <div>
-               <Count></Count>
+                
             </div>
         );
     }
 }
 
-export default App;
+export default Index;
