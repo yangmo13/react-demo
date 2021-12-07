@@ -1,17 +1,26 @@
+import {connect} from "react-redux"
 import React, { Component } from 'react';
-import store from "../../store/store"
-import { createIncrementAction, createDecrementAction,createIncrementAsyncAction } from "../../store/countAction"
+import {createIncrementAction,createDecrementAction,createIncrementAsyncAction} from "../store/countAction"
 
+//优化前
+//const mapStateToProps = state=>({count:state})
+// const mapDispatchToProps = dispatch=>({
+//     add:number=>dispatch(createIncrementAction(number)),
+//     reduce:number=>dispatch(createDecrementAction(number)),
+//     addAsync:number=>dispatch(createIncrementAsyncAction({value:number,time:300})),
+// })
+
+
+// export default connect(mapStateToProps,mapDispatchToProps )(CountUI)
+
+//优化后（根据api优化方法）
 class Index extends Component {
+ 
     state = {
         count: 0
     }
-    componentDidMount() {
-        store.subscribe(() => {
-            this.setState({})
-        })
-    }
     render() {
+        console.log(this.props)
         return (
             <div>
                 <h1>当前求值为 {this.props.count}</h1>
@@ -33,13 +42,13 @@ class Index extends Component {
     }
     reduceNum = () => {
         const { value } = this.selectNum
-        store.dispatch(createDecrementAction(value))
+        this.props.reduce(value)
 
     }
     increamentOdd = () => {
         const { value } = this.selectNum
-        if (value % 2) {
-            store.dispatch(createIncrementAction(value))
+        if (this.props.count % 2) {
+            this.props.add(value)
         }
 
     }
@@ -50,9 +59,16 @@ class Index extends Component {
         // }, 300)
 
         const { value } = this.selectNum
-        store.dispatch(createIncrementAsyncAction({value,time:300}))
+        this.props.addAsync({value,time:300})
     }
 
 }
 
-export default Index;
+export default connect(
+   state=>({count:state}),
+   {
+    add:createIncrementAction,
+    reduce:createDecrementAction,
+    addAsync:createIncrementAsyncAction
+   } 
+)(Index)

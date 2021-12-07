@@ -1,5 +1,5 @@
 import {createStore,applyMiddleware} from "redux"
-import countReduce from "./reduces/count"
+import countReduce from "./countReduce"
 import thunk from "redux-thunk"
 
 

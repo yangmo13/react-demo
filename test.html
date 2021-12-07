@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="test" />
+    <button id="btn">测试</button>
+</body>
+<script>
+    let test = document.getElementById('test')
+    let btn = document.getElementById('btn')
+
+    let reg = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*_.]).{8,}/
+    btn.addEventListener('click', () => {
+
+        console.log(reg.test(test.value))
+    })
+</script>
+
+</html>
