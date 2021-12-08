@@ -6,20 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .img-test {
+            width: 200px;
+            height: 50px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .img-icon {
+            transform: rotate(7deg);
+            font-weight: 550;
+            color: rgb(0, 0, 0);
+        }
+    </style>
 </head>
 
 <body>
     <input type="text" id="test" />
     <button id="btn">测试</button>
+    <div class="img-test">
+        <div class="img-icon"></div>
+        <div class="img-icon"></div>
+        <div class="img-icon"></div>
+        <div class="img-icon"></div>
+
+    </div>
 </body>
 <script>
     let test = document.getElementById('test')
-    let btn = document.getElementById('btn')
-
+    let btn = document.getElementsByClassName('img-test')[0]
     let reg = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*_.]).{8,}/
+    let img1 = document.getElementsByClassName("img-icon")[0]
+    let img2 = document.getElementsByClassName("img-icon")[1]
+    let img3 = document.getElementsByClassName("img-icon")[2]
+    let img4 = document.getElementsByClassName("img-icon")[3]
     btn.addEventListener('click', () => {
+        let first = String(Math.floor(Math.random() * 10))
+        let second = String(Math.floor(Math.random() * 10))
+        let thirdly = String(Math.floor(Math.random() * 10))
+        let fourth = String(Math.floor(Math.random() * 10))
+        let str = first + second + thirdly + fourth
+        img1.innerHTML = first
+        img2.innerHTML = second
+        img3.innerHTML = thirdly
+        img4.innerHTML = fourth
 
-        console.log(reg.test(test.value))
+        let angle1 = Math.floor(Math.random() * 90)
+        let angle2 = Math.floor(Math.random() * 90)
+        let angle3 = Math.floor(Math.random() * 90)
+        let angle4 = Math.floor(Math.random() * 90)
+
+        img1.style.transform = `rotate(${angle1}deg)`
+        img2.style.transform = `rotate(${angle2}deg)`
+        img3.style.transform = `rotate(${angle3}deg)`
+        img4.style.transform = `rotate(${angle4}deg)`
+
+        let size1 = Math.floor(Math.random() *10+15)
+        let size2 = Math.floor(Math.random() * 10+15)
+        let size3 = Math.floor(Math.random() * 10+15)
+        let size4 = Math.floor(Math.random() * 10+15)
+
+        img1.style['font-size'] = `${size1}px`
+        img2.style['font-size'] = `${size2}px`
+        img3.style['font-size']= `${size3}px`
+        img4.style['font-size'] = `${size4}px`
+
+        let color1 =`rgb(${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)})`  
+        let color2 =`rgb(${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)})`          
+        let color3 =`rgb(${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)})`  
+        let color4 =`rgb(${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)},${Math.floor(Math.random() *255)})`         
+      
+      
+        img1.style['color']= color1
+        img2.style['color'] = color2
+        img3.style['color']= color3
+        img4.style['color'] = color4
+
     })
 </script>
 
